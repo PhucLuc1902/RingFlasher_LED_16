@@ -133,8 +133,7 @@ module tb_ringflasher;
         pulse_flick_1clk();
         wait_posedge(1);
         check_state(dut.ON_0_TO_15, "leave INIT and enter ON_0_TO_15");
-
-        // code hiện tại của bạn sẽ bắt đầu với N=0 rồi tăng dần
+        
         check_led(expected_led_from_n(dut.N), "LED pattern matches N in ON_0_TO_15");
 
         // CASE 4: Reach top of ON_0_TO_15
@@ -185,7 +184,6 @@ module tb_ringflasher;
         check_led(expected_led_from_n(dut.N), "LED pattern valid in OFF_5_TO_0");
 
         // CASE 9: Final OFF state returns to INIT
-        // no kickback allowed here
 
         while (dut.state == dut.OFF_5_TO_0 && dut.N > 0)
             @(posedge clk);
@@ -212,7 +210,6 @@ module tb_ringflasher;
         #1;
         flick = 1'b0;
 
-        // do code của bạn giữ state khi KICKBACK
         check_state(dut.OFF_15_TO_5, "kickback at 5 repeats OFF_15_TO_5");
         check_led(expected_led_from_n(dut.N), "LED pattern valid after kickback at 5");
 
