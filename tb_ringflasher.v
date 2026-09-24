@@ -199,11 +199,15 @@ module tb_ringflasher;
         do_reset();
         pulse_flick_1clk();
 
-        while (dut.state != dut.OFF_15_TO_5)
+        while (dut.state != dut.OFF_15_TO_5) begin
             @(posedge clk);
+            #1;
+        end
 
-        while (!(dut.state == dut.OFF_15_TO_5 && dut.N == 5))
+        while (!(dut.state == dut.OFF_15_TO_5 && dut.N == 5)) begin
             @(posedge clk);
+            #1;
+        end
 
         flick = 1'b1;
         @(posedge clk);
@@ -219,11 +223,15 @@ module tb_ringflasher;
         do_reset();
         pulse_flick_1clk();
 
-        while (dut.state != dut.OFF_10_TO_0)
+        while (dut.state != dut.OFF_10_TO_0) begin
             @(posedge clk);
+            #1;
+        end
 
-        while (!(dut.state == dut.OFF_10_TO_0 && dut.N == 0))
+        while (!(dut.state == dut.OFF_10_TO_0 && dut.N == 0)) begin
             @(posedge clk);
+            #1;
+        end
 
         flick = 1'b1;
         @(posedge clk);
@@ -239,11 +247,15 @@ module tb_ringflasher;
         do_reset();
         pulse_flick_1clk();
 
-        while (dut.state != dut.OFF_5_TO_0)
+        while (dut.state != dut.OFF_5_TO_0) begin
             @(posedge clk);
+            #1;
+        end
 
-        while (!(dut.state == dut.OFF_5_TO_0 && dut.N == 0))
+        while (!(dut.state == dut.OFF_5_TO_0 && dut.N == 0)) begin
             @(posedge clk);
+            #1;
+        end
 
         flick = 1'b1;
         @(posedge clk);
